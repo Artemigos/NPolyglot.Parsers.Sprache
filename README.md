@@ -6,7 +6,7 @@ To add a Sprache parser to your project:
 * add a class
 * add a property returning the parser's name:
 
-  ```cs
+  ```csharp
   public static string ExportName
   {
       get
@@ -19,7 +19,7 @@ To add a Sprache parser to your project:
 
 * add a method that parses input:
 
-  ```cs
+  ```csharp
   public static object ParseString(string input)
   {
       return new { Input = intput };
@@ -33,7 +33,7 @@ With that you can start writing your Sprache parser - the Sprache library will b
 
 A simple parser would look like this:
 
-```cs
+```csharp
 using System.Collections.Generic;
 using System.Linq;
 
