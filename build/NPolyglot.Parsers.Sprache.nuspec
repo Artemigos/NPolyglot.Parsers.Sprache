@@ -10,6 +10,7 @@
     <description>Package with Sprache parsers support for NPolyglot.</description>
     <copyright>Copyright 2017 Łukasz Klimek</copyright>
     <tags>dsl build NPolyglot Sprache</tags>
+    <title>NPolyglot Sprache parser</title>
 
     <dependencies>
       <dependency id="NPolyglot.Core" version="[0.1.0-alpha]" />
