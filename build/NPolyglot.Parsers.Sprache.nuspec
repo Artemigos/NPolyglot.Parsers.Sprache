@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>NPolyglot.Parsers.Sprache</id>
+    <version>0.1.0-alpha</version>
+    <authors>Łukasz Klimek</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/Artemigos/NPolyglot.Parsers.Sprache</projectUrl>
+    <licenseUrl>https://github.com/Artemigos/NPolyglot.Parsers.Sprache/blob/master/LICENSE</licenseUrl>
+    <description>Package with Sprache parsers support for NPolyglot.</description>
+    <copyright>Copyright 2017 Łukasz Klimek</copyright>
+    <tags>dsl build NPolyglot Sprache</tags>
+
+    <dependencies>
+      <dependency id="NPolyglot.Core" version="[0.1.0-alpha]" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="../src/NPolyglot.Parsers.Sprache/NPolyglot.Parsers.Sprache.targets" target="build" />
+    <file src="../src/NPolyglot.Parsers.Sprache/bin/Release/NPolyglot.Parsers.Sprache.dll" target="build" />
+    <file src="../src/NPolyglot.Parsers.Sprache/bin/Release/Newtonsoft.Json.dll" target="build" />
+    <file src="../src/NPolyglot.Parsers.Sprache/bin/Release/Sprache.dll" target="build" />
+  </files>
+</package>

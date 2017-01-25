@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask AssemblyFile="$(MSBuildThisFileDirectory)NPolyglot.Parsers.Sprache.dll" TaskName="SpracheParse" Condition="Exists('$(MSBuildThisFileDirectory)NPolyglot.Parsers.Sprache.dll')" />
+  <UsingTask AssemblyFile="$(MSBuildThisFileDirectory)bin\$(Configuration)\NPolyglot.Parsers.Sprache.dll" TaskName="SpracheParse" Condition="!Exists('$(MSBuildThisFileDirectory)NPolyglot.Parsers.Sprache.dll')" />
+
+  <PropertyGroup>
+    <ParseDependsOn>$(ParseDependsOn);ParseWithSprache</ParseDependsOn>
+    <SpracheParsersDll>$(DslOutPath)sprache.dll</SpracheParsersDll>
+    <SpracheDll Condition="Exists('$(MSBuildThisFileDirectory)Sprache.dll')">$(MSBuildThisFileDirectory)Sprache.dll</SpracheDll>
+    <SpracheDll Condition="!Exists('$(MSBuildThisFileDirectory)Sprache.dll')">$(MSBuildThisFileDirectory)bin\$(Configuration)\Sprache.dll</SpracheDll>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvailableItemName Include="SpracheParser" />
+  </ItemGroup>
+
+  <Target Name="ParseWithSprache"
+          DependsOnTargets="CompileSpracheParsers">
+    <SpracheParse ParsersDll="$(SpracheParsersDll)"
+                  DslCodeFiles="@(_PreprocessedDslCode)">
+      <Output TaskParameter="DslCodeWithMetadata" ItemName="_ParsedDslCode" />
+    </SpracheParse>
+  </Target>
+
+  <Target Name="CompileSpracheParsers"
+          Inputs="@(SpracheParser)"
+          Outputs="$(SpracheParsersDll)">
+    <Csc Sources="@(SpracheParser)"
+         OutputAssembly="$(SpracheParsersDll)"
+         TargetType="library"
+         References="$(SpracheDll)"
+         WarningLevel="1" />
+  </Target>
+</Project>
